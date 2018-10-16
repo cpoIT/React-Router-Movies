@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, NavLink } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import axios from 'axios';
 
@@ -36,8 +36,8 @@ export default class MovieList extends Component {
 function MovieDetails({ movie }) {
   const {id} = movie;
   return (
-    <Link key={movie.id} to={`/movies/${id}`}>
+    <NavLink key={movie.id} to={`/movies/${id}`}>
       <MovieCard {...movie}/>
-    </Link>
+    </NavLink>
   );
 }
