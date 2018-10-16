@@ -13,6 +13,10 @@ export default class App extends Component {
     };
   }
 
+  clickHandler = (event) => {
+    event.preventDefault();
+  }
+
   addToSavedList = movie => {
     const savedList = this.state.savedList;
     savedList.push(movie);
@@ -23,9 +27,12 @@ export default class App extends Component {
     return (
       <div>
         <SavedList list={this.state.savedList} />
-        <Route exact path="/" component={MovieList} />
+        {/* <Route exact path="/" component={MovieList} /> */}
+        <Route exact path="/" render={props => <MovieList {...props} savedList={this.state.savedList} />} /> 
         <Route path="/movies/:id" component={Movie} />
       </div>
     );
   }
 }
+
+// props in MovieList comes from its Route (History Location Match) not from the App Component
